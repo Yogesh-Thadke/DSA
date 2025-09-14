@@ -4,19 +4,18 @@
 public class Solution extends VersionControl {
     public int firstBadVersion(int n) {
         
-        int l=1,r=n, ans=0;
+        int l=1,r=n; //ans=0;
 
-        while(l<=r){
+        while(l<r){
             int mid=l+(r-l)/2;
             if(isBadVersion(mid)==true){
-                ans = mid;
-                r=mid-1;
+                r = mid;
             }
             else{
                 l=mid+1;
             }
             
         }
-        return ans;
+        return l;
     }
 }
