@@ -5,11 +5,14 @@ class Solution {
         for(int num : candyType){
             map.put(num, map.getOrDefault(num,0)+1);
         }
+        /*
         int candy = candyType.length/2;
         if(candy <= map.size()){
             return candy;
         }else{
             return map.size();
         }
+        */
+        return Math.min(candyType.length/2,map.size());
     }
 }
