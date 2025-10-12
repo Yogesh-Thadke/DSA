@@ -1,9 +1,10 @@
 import java.util.*;
 class Solution {
     public int distributeCandies(int[] candyType) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Set<Integer> map = new HashSet<>();
         for(int num : candyType){
-            map.put(num, map.getOrDefault(num,0)+1);
+            //map.put(num, map.getOrDefault(num,0)+1);
+            map.add(num);
         }
         /*
         int candy = candyType.length/2;
