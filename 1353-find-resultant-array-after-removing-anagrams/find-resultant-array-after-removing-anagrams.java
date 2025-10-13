@@ -13,6 +13,7 @@ class Solution {
     }
     public boolean is_anagaram(String ana1, String ana2){
         if(ana1.length()!=ana2.length()) return false;
+/*      
         HashMap<Character, Integer> map = new HashMap<>();
         for(int i=0; i<ana1.length(); i++){
             map.put(ana1.charAt(i),map.getOrDefault(ana1.charAt(i),0)+1);
@@ -23,5 +24,14 @@ class Solution {
             if(map.get(c)==0) map.remove(c);
         }
         return map.isEmpty();
+*/      int[] count = new int[26];
+        for(int i=0; i<ana1.length(); i++){
+            count[ana1.charAt(i)-'a']++;
+            count[ana2.charAt(i)-'a']--;
+        }
+        for(int c : count){
+            if(c!=0) return false;
+        }
+        return true;
     }
 }
