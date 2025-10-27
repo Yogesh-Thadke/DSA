@@ -1,16 +1,14 @@
 class Bank {
-    ArrayList<Long> list = new ArrayList<>();
+    long[] ans;
     public Bank(long[] balance) {
-        for(long val : balance){
-            list.add(val);
-        }
+        ans = balance;
     }
     
     public boolean transfer(int account1, int account2, long money) {
-        if(list.size()>=account1 && list.size()>=account2){
-            if(list.get(account1-1)>=money){
-                list.set(account2-1,(list.get(account2-1))+money);
-                list.set(account1-1,(list.get(account1-1))-money);
+        if(ans.length>=account1 && ans.length>=account2){
+            if(ans[account1-1]>=money){
+                ans[account2-1]+=money;
+                ans[account1-1]-=money;
                 return true;
             }
         }
@@ -18,16 +16,16 @@ class Bank {
     }
     
     public boolean deposit(int account, long money) {
-        if(list.size()>=account){
-            list.set(account-1,(list.get(account-1)+money));
+        if(ans.length>=account){
+            ans[account-1]+=money;
             return true;
         }
         return false;
     }
     
     public boolean withdraw(int account, long money) {
-        if(list.size()>=account && list.get(account-1)>=money){
-            list.set(account-1,(list.get(account-1)-money));
+        if(ans.length>=account && ans[account-1]>=money){
+            ans[account-1]-=money;
             return true;
         }
         return false;
