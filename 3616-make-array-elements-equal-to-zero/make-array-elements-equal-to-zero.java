@@ -1,32 +1,25 @@
 class Solution {
     public int countValidSelections(int[] nums) {
-        int count = 0;
+        int totall_sum = 0;
+        int ans = 0;
+        for(int i=0; i<nums.length; i++){
+            totall_sum += nums[i]; 
+        }
+        
         for(int i=0; i<nums.length; i++){
             if(nums[i]==0){
-                for(int dir : new int[]{-1,1}){
-                    int[] temp = Arrays.copyOf(nums,nums.length);
-                    int curr = i;
-                    int direction = dir;
-                    while(0<=curr && curr<nums.length){
-                        if(temp[curr]==0){
-                            curr += direction; 
-                        }else{
-                            temp[curr]-=1;
-                            direction = -direction;
-                            curr += direction;
-                        }
-                    }
-                    boolean allZero = true;
-                    for(int x : temp){
-                        if(x!=0){
-                            allZero = false;
-                            break;
-                        }
-                    }
-                    if(allZero)count++;
+                int pref_sum = 0;
+                for(int j=0; j<i; j++){
+                    pref_sum+=nums[j];
+                }
+                if(2*pref_sum == totall_sum){
+                    ans+=2;
+                }
+                else if(Math.abs(totall_sum-2*pref_sum)==1){
+                    ans+=1;
                 }
             }
         }
-        return count;
+        return ans;
     }
 }
