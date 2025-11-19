@@ -1,7 +1,7 @@
-import java.util.*;
+//import java.util.*;
 class Solution {
     public int findFinalValue(int[] nums, int original) {
-        //Map<Integer,Integer> map = new HashMap<>();
+
         Set<Integer> num = new HashSet<>();
 
         for(int i : nums){
