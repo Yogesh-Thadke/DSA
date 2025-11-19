@@ -7,12 +7,8 @@ class Solution {
         for(int i=0;i<nums.length; i++){
             map.put(nums[i],i);
         }
-        while(present){
-            if(map.containsKey(original)){
-                original*=2;
-            }else{
-                present=false;
-            }
+        while(map.containsKey(original)){
+            original*=2;
         }
         return original;
     }
