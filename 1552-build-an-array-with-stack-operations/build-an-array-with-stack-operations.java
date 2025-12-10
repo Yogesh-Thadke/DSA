@@ -1,14 +1,19 @@
 class Solution {
     public List<String> buildArray(int[] target, int n) {
-        List<String> list = new ArrayList<>();
-        HashSet<Integer> set = new HashSet<>();
-        for(int num : target){
-            set.add(num);
-        }
-        for(int i=1; i<=target[target.length-1]; i++){
+        ArrayList<String> list = new ArrayList<>();
+
+        int i=1;
+        int j=0;
+
+        while(i<=n && j<target.length){
             list.add("Push");
-            if(!set.contains(i)){
+            if(i==target[j]){
+                i++;
+                j++;
+            }
+            else{
                 list.add("Pop");
+                i++;
             }
         }
         return list;
