@@ -1,13 +1,10 @@
 class Solution {
     public int countPermutations(int[] complexity) {
         int n = complexity.length;
-        //if(complexity[0]==complexity[1]) return 0;
-        int i=1;
-        while(i<n){
+        for(int i=1; i<n; i++){
             if(complexity[0]>=complexity[i]){
                 return 0;
             }
-            i++;
         }
         int mod = 1000000007;
         long ans = 1;
