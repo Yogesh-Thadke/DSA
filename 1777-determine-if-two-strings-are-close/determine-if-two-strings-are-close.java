@@ -1,32 +1,35 @@
 class Solution {
     public boolean closeStrings(String word1, String word2) {
-        if(word1.length()==word2.length()){
-            Map<Character, Integer>map1 = new HashMap<>();
-            Map<Character, Integer>map2 = new HashMap<>();
+        if(word1.length()!=word2.length()){
+            return false;
+        }
+        if(word1.compareTo(word2)==0){
+            return true;
+        }
+        int freq1[] = new int[26];
+        int freq2[] = new int[26];
 
-            for(int i=0; i<word1.length(); i++){
-                map1.put(word1.charAt(i),map1.getOrDefault(word1.charAt(i),0)+1);
+        for(char c : word1.toCharArray()){
+            freq1[c-'a']++;
+        }
+        for(char c : word2.toCharArray()){
+            freq2[c-'a']++;
+        }
+        for(int i=0; i<26; i++){
+            if(freq1[i]==0 && freq2[i]!=0){
+                return false;
             }
-            for(int i=0; i<word2.length(); i++){
-                map2.put(word2.charAt(i),map2.getOrDefault(word2.charAt(i),0)+1);
-            }
-            if(map1.keySet().equals(map2.keySet())){
-                List<Integer> list1 = new ArrayList<>();
-                List<Integer> list2 = new ArrayList<>();
-                for(Integer val : map1.values()){
-                    list1.add(val);
-                }
-                for(Integer val : map2.values()){
-                    list2.add(val);
-                }
-                Collections.sort(list1);
-                Collections.sort(list2);
-                return list1.equals(list2);
-            }else{
+            if(freq1[i]!=0 && freq2[i]==0){
                 return false;
             }
         }
-        return false;
-        
+        Arrays.sort(freq1);
+        Arrays.sort(freq2);
+        for(int i=0; i<26; i++){
+            if(freq1[i]!=freq2[i]){
+                return false;
+            }
+        }
+        return true;
     }
 }
