@@ -4,11 +4,12 @@ class Solution {
         long sum = 0;
         for(int i=0; i<matrix.length; i++){
             for(int j=0; j<matrix[i].length; j++){
+                int val = Math.abs(matrix[i][j]);
                 if(matrix[i][j]<0){
                     count++;
                 }
-                sum+=Math.abs(matrix[i][j]);
-                min = Math.min(min,Math.abs(matrix[i][j]));
+                sum+=val;
+                min = Math.min(min,val);
             }
         }
         if(count%2!=0){
