@@ -14,7 +14,7 @@ class Solution {
         if(count%2==0){
             return sum;
         }else{
-            return sum-2*min;
+            return sum-2L*min;
         }
     }
 }
