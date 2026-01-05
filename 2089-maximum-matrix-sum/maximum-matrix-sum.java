@@ -11,10 +11,9 @@ class Solution {
                 min = Math.min(min,Math.abs(matrix[i][j]));
             }
         }
-        if(count%2==0){
-            return sum;
-        }else{
-            return sum-2L*min;
+        if(count%2!=0){
+            sum-=2L*min;
         }
+        return sum;
     }
 }
