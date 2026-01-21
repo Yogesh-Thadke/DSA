@@ -15,7 +15,7 @@ class Solution {
                     bit++;
                     temp = temp >> 1; 
                 }
-                ans[i]=num ^ (1 << bit-1);
+                ans[i]=(int)num ^ (1 << bit-1);
             }
         }
         return ans;
