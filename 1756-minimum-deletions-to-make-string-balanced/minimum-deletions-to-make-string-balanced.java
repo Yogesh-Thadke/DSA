@@ -10,7 +10,6 @@ class Solution {
             }else{
                 stack.push(s.charAt(i));
             }
-            //stack.push(s.charAt(i));
         }
         return count;
     }
