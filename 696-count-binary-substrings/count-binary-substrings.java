@@ -1,23 +1,19 @@
 class Solution {
     public int countBinarySubstrings(String s) {
-        List<Integer> list = new ArrayList<>();
-        int i=0,j=0;
-        int count = 0;
-        while(i<s.length() && j<s.length()){
-            if(s.charAt(i)==s.charAt(j)){
-                count++;
-                j++;
+        int prevGroup = 0;
+        int currGroup = 1;
+        int result = 0;
+
+        for(int i=1; i<s.length(); i++){
+            if(s.charAt(i)==s.charAt(i-1)){
+                currGroup++;
             }else{
-                i=j;
-                list.add(count);
-                count=0;
+                result+=Math.min(prevGroup,currGroup);
+                prevGroup = currGroup;
+                currGroup = 1;
             }
         }
-        list.add(count);
-        int sum = 0;
-        for(int k=0; k<list.size()-1; k++){
-            sum+=Math.min(list.get(k),list.get(k+1));
-        }
-        return sum;
+
+        return result+=Math.min(prevGroup,currGroup);
     }
 }
