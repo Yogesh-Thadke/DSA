@@ -6,7 +6,7 @@ class Solution {
             String sub = s.substring(i,i+k);
             set.add(sub);
         }
-        if(set.size()==(int) Math.pow(2,k)){
+        if(set.size()== (1<<k)){
             return true;
         }
         return false;
