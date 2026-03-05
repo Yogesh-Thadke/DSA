@@ -1,35 +1,20 @@
 class Solution {
     public int minOperations(String s) {
-        StringBuilder str = new StringBuilder();
-        int count1=0,count2=0;
-
-        for(int i=0; i<s.length(); i++){
+        int n = s.length();
+        int StartZero = 0;
+        for(int i=0; i<n; i++){
             if(i%2==0){
-                str.append('0');
+                if(s.charAt(i)=='1'){
+                    StartZero++;
+                }
             }else{
-                str.append('1');
+                if(s.charAt(i)=='0'){
+                    StartZero++;
+                }
             }
         }
-        String str1 = str.toString();
-        str.setLength(0);
-        for(int i=0; i<s.length(); i++){
-            if(i%2==0){
-                str.append('1');
-            }else{
-                str.append('0');
-            }
-        }
-        String str2 = str.toString();
+        int StartOne = n-StartZero;
 
-        for(int i=0; i<s.length(); i++){
-            if(s.charAt(i)!=str1.charAt(i)){
-                count1++;
-            }
-            if(s.charAt(i)!=str2.charAt(i)){
-                count2++;
-            }
-        }
-
-        return Math.min(count1,count2);
+        return Math.min(StartOne, StartZero);
     }
 }
