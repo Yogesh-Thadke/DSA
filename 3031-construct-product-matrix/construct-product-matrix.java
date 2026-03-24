@@ -5,27 +5,30 @@ class Solution {
         int mod = 12345;
         int size = m*n;
 
-        int[] result = new int[size];
-        
-        int prefix = 1;
-        for(int i=0; i<size; i++){
-            result[i] = prefix;
-            prefix = (prefix*(grid[i/m][i%m]%mod))%mod;
-        }
-        
-        int sufix = 1;
-        for(int i=size-1; i>=0; i--){
-            result[i] = (result[i]*sufix)%mod;
-            sufix = (sufix*(grid[i/m][i%m]%mod))%mod;
-        }
-        int[][] p = new int[n][m];
+        int[][] result = new int[n][m];
 
         for(int i=0; i<n; i++){
             for(int j=0; j<m; j++){
-                p[i][j] = result[i*m+j];
+                result[i][j] = 1;
             }
         }
-
-        return p;
+        
+        long prefix = 1;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                result[i][j] = (int)prefix;
+                prefix = (prefix*grid[i][j])%mod;
+            }
+        }
+        
+        long sufix = 1;
+        for(int i=n-1; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                result[i][j] = (int)(result[i][j]*sufix)%mod;
+                sufix = (sufix*grid[i][j])%mod;
+            }
+        }
+        
+        return result;
     }
 }
