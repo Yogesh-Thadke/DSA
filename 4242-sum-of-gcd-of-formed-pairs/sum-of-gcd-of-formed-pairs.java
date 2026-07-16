@@ -10,7 +10,7 @@ class Solution {
         Arrays.sort(prefixGcd);
         int j = prefixGcd.length-1;
         for(int i=0; i<prefixGcd.length/2; i++){
-            sum += (long) gcd(prefixGcd[i],prefixGcd[j]);
+            sum += gcd(prefixGcd[i],prefixGcd[j]);
             j--; 
         }
         return sum;
