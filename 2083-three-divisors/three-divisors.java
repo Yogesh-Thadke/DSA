@@ -1,14 +1,22 @@
 class Solution {
     public boolean isThree(int n) {
-        int count = 0;
-        for(int i=1; i<=n; i++){
+        int root = (int)Math.sqrt(n);
+
+        if(root * root != n){
+            return false;
+        }
+
+        return isPrime(root);
+
+    }
+    boolean isPrime(int n){
+        if(n<2) return false;
+
+        for(int i=2; i*i<=n; i++){
             if(n%i==0){
-                count++;
+                return false;
             }
         }
-        if(count == 3){
-            return true;
-        }
-        return false;
+        return true;
     }
 }
