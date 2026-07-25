@@ -3,10 +3,10 @@ class Solution {
         int i=0;
         int j=1;
         while(i<nums.length && j<nums.length){
-            if(nums[i]%2==0){
+            if((nums[i]&1)==0){
                 i+=2;
             }
-            else if(nums[j]%2==1){
+            else if((nums[j]&1)==1){
                 j+=2;
             }
             else{
