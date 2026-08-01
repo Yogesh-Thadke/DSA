@@ -5,4 +5,4 @@ CASE
     THEN 'Yes'
     ELSE 'No'
     END AS triangle
-FROM triangle t;
+FROM Triangle t;
