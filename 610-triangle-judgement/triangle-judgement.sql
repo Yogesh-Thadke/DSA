@@ -1,9 +1,8 @@
 # Write your MySQL query statement below
 SELECT x,y,z,
 CASE 
-    WHEN x+y <= z THEN 'No'
-    WHEN x+z <= y THEN 'No'
-    WHEN y+z <= x THEN 'No'
-    ELSE 'Yes'
+    WHEN x+y > z AND x+z > y AND y+z > x 
+    THEN 'Yes'
+    ELSE 'No'
     END triangle
 FROM triangle
