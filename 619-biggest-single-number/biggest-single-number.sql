@@ -1,8 +1,8 @@
 # Write your MySQL query statement below
-SELECT ifnull(
-    (SELECT num
+SELECT MAX(num) num
+FROM (
+    SELECT num
     FROM MyNumbers
     GROUP BY num
     HAVING COUNT(num) = 1
-    ORDER BY num DESC
-    LIMIT 1),null) num;
+) t
