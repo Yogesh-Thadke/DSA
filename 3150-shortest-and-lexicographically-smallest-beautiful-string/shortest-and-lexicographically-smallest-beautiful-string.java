@@ -3,26 +3,21 @@ class Solution {
         int minlen = Integer.MAX_VALUE;
         String ans = "";
         for(int i=0; i<s.length(); i++){
-            String str = "";
             int oneCount = 0;
-            int len = 0;
             for(int j=i; j<s.length(); j++){
                 char c = s.charAt(j);
                 if(c == '1'){
                     oneCount++;
                 }
                 if(oneCount == k){
-                    str = s.substring(i,j+1);
-                    len = (j+1)-i;
+                    String str = s.substring(i,j+1);
+                    int len = (j+1)-i;
+
+                    if(len < minlen || (len == minlen && str.compareTo(ans) < 0)){
+                        ans = str;
+                        minlen = len;
+                    }
                     break;
-                }
-            }
-            if(len > 0){
-                if(len < minlen){
-                    ans = str;
-                    minlen = len;
-                }else if(len == minlen && str.compareTo(ans) < 0){
-                    ans = str;
                 }
             }
         }
