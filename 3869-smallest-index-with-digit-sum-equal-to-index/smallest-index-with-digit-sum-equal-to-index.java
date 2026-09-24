@@ -10,12 +10,8 @@ class Solution {
                 sum+=remender;
                 digit /= 10; 
             }
-            if(sum == i){
-                minIndex = Math.min(minIndex,i);
-            }
+            if(sum == i) return i;
         }
-        if(minIndex == Integer.MAX_VALUE) return -1;
-        
-        return minIndex;
+        return -1;
     }
 }
