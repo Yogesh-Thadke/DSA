@@ -5,9 +5,10 @@ class Solution {
         int prev = 0;
 
         for(int i=0; i<s.length(); i++){
-            d = Math.abs(prev-(s.charAt(i)-'0'));
+            int curr = s.charAt(i)-'0';
+            d = Math.abs(prev-curr);
             ans += Math.min(d,10-d);
-            prev = s.charAt(i)-'0';
+            prev = curr;
         }
         return ans;
     }
