@@ -3,22 +3,20 @@ class Solution {
         if(sum > num*9) return "";
 
         StringBuilder str = new StringBuilder();
-        int n = 9;
 
-        while(num>0 && n>0 && sum>0){
-            int numCount = Math.min(sum/n, num);
-
-            for(int i=0; i<numCount; i++){
-                str.append(n);
-            }
-            sum -= numCount*n;
-            num -= numCount;
-            n--;
+        int r = sum%9;
+        int nineCount = sum/9;
+        for(int i=0; i<nineCount; i++){
+            str.append('9');
         }
-        while(num > 0){
+        if(r>0){
+            str.append((char) ('0'+ r));
+        }
+        int zeros = num-str.length();
+        for(int i=0; i<zeros; i++){
             str.append('0');
-            num--;
         }
+
         return str.toString();
     }
 }
