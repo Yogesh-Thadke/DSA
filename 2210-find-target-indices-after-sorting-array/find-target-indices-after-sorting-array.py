@@ -1,15 +1,11 @@
-class Solution(object):
-    def targetIndices(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        nums.sort()
-        ans = []
+class Solution:
+    def targetIndices(self, nums: list[int], target: int) -> list[int]:
+        less_count = target_count = 0
 
-        for i, num in enumerate(nums):
+        for num in nums:
+            if num < target:
+                less_count += 1
             if num == target:
-                ans.append(i)
-        
-        return ans
+                target_count += 1
+                
+        return list(range(less_count, less_count + target_count))
