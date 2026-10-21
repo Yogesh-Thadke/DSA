@@ -1,38 +1,20 @@
 class Solution:
     def minOperations(self, s: str) -> int:
         n = len(s)
-        sorted = True
-        for i in range(n-1):
-            if s[i] > s[i+1]:
-                sorted = False
-                break
         
-        if sorted:
+        if all( a<=b for a, b in zip(s,s[1:])):
             return 0
 
         if n == 2:
             return -1
 
-        max, min = 'a', 'z'
-        min_count = max_count = 0
+        mx, mn = max(s), min(s)
 
-        for i in range(n):
-            if s[i] < min:
-                min = s[i]
-                min_count = 1
-            elif s[i] == min:
-                min_count+=1
-
-            if s[i] > max:
-                max = s[i]
-                max_count = 1
-            elif s[i] == max:
-                max_count+=1
-
-        if min == s[0] or max == s[n-1]:
+        if mn == s[0] or mx == s[-1]:
             return 1
 
-        if min == s[n-1] and max == s[0] and min_count == 1 and max_count == 1:
-            return 3
-
-        return 2
+        for i in range(1, n-1):
+            if mn == s[i] or mx == s[i]:
+                return 2
+        
+        return 3
