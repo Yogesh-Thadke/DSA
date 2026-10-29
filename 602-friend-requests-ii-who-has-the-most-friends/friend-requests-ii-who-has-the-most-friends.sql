@@ -8,6 +8,6 @@ FROM(
     FROM RequestAccepted
 )t
 GROUP BY id
-ORDER BY COUNT(id) DESC
+ORDER BY num DESC
 LIMIT 1;
 
