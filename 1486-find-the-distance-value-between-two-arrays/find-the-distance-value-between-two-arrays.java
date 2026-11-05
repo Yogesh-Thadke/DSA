@@ -4,8 +4,7 @@ class Solution {
         int count = 0;
         for(int num1 : arr1){
             for(int num2 : arr2){
-                int diff = Math.abs(num1-num2);
-                if(diff <= d){
+                if(Math.abs(num1-num2) <= d){
                     count++;
                     break;
                 }
