@@ -1,13 +1,8 @@
 class Solution:
     def minChanges(self, s: str) -> int:
         ans = 0
-        l = 0
-        r = 1
-
-        while l < len(s):
-            if s[l] != s[r]:
+        for i in range(0, len(s), 2):
+            if s[i] != s[i+1]:
                 ans+=1
-            l = r+1
-            r = l+1
 
         return ans
